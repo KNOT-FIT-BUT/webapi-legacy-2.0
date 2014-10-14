@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Web API for NER [beta]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+
+    <!-- Le styles -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+   
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        padding-bottom: 40px;
+      }
+.results{
+	max-height: 500px;
+	overflow: auto;
+	cursor: pointer;
+}
+      
+
+pre {
+    height: auto;
+    max-height: 800px;
+    overflow: auto;
+    background-color: #eeeeee;
+    word-break: keep-all !important;
+    word-break: break-word;
+    word-wrap: normal !important;
+    white-space: pre-wrap !important;
+    cursor:text;
+}
+
+
+.centered
+{
+    text-align:center;
+    background-color:white;
+}
+
+
+.sel{
+	
+	text-decoration:underline;
+	
+	font-weight:bold;
+	background-color: #333000;
+}
+
+
+
+textarea{
+	min-height: 100%;
+    height: auto !important;
+    width: 99%;
+    height: 100%;
+}
+
+.carousel-div{
+	height:400px;
+}
+
+
+.carousel-inner>.item>img {
+  width: auto;
+  margin: auto;
+  height:400px;
+}
+
+.results li:nth-child(even) {background: #EEEEEE}
+.results li:nth-child(odd) {background: #FFF}
+
+.carousel-indicators li {
+  background-color: purple;
+}
+
+.carousel-indicators .active {
+  background-color: red;
+}
+
+
+    </style>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">Decipher NERC</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">NER</a></li>
+              <li><a href="help.html">Help</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+	
+
+    <div class="container-fluid">
+    	<div class="tabbable tabs-up">
+			<ul class="nav nav-tabs" id="myTab">
+  				<li class="active"><a href="#input" data-toggle="tab">Input</a></li>
+  				<li><a href="#output" data-toggle="tab">Output</a></li>
+  				<li><a href="#settings" data-toggle="tab">Settings</a></li>
+			</ul>
+			
+		</div>
+ 			
+		<div class="tab-content" id="mainTabPaneContent">
+			<div class="tab-pane active" id="input">
+  				<div class="container">
+ 			
+		    	
+	    			<div class="span12" id="inputblock">
+						
+	 				</div>
+ 				</div>
+			</div>
+			<div class="tab-pane" id="output">
+				<div class="row" id="resultPane">
+					<div class="span4" id="EntityTabContainer">
+					</div>
+					<div class="span8" id="OutputTabContainer">
+					</div>
+					<div class="span4" id="EntityInfoContainer">
+					</div>
+				</div>		
+			</div>
+			<div class="tab-pane" id="settings">
+				<div class="container" id="settingsPane">
+					<div class="" id="apiswitches">
+					</div>
+					<br />
+					<div class="" id="kbmanagerblock">
+					</div>
+					<br />
+					<div class="" id="colormanagerblock">
+					</div>
+				</div>		
+			</div>
+		</div>
+	</div>
+	
+	
+   <hr>   
+	<footer>
+        <p>&copy; KNOT Group 2013</p>
+      </footer>
+    <!-- /container -->
+	<div id="modalDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  	<div class="modal-header">
+	    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	    	<h3 id="myModalLabel">Warning!</h3>
+	  	</div>
+	  	<div class="modal-body" id="modalContent">
+	    	
+	  	</div>
+	  	<div class="modal-footer">
+	    	<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		</div>
+	</div>
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="js/core.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/bootstrap-colorpicker.min.js"></script>
+    <script type="text/javascript" src="js/jquery.lazyload.js"></script>
+    <script type="text/javascript" src="js/jquery.scroolto.js"></script>
+	<script type="text/javascript" src="js/renderers/KBmanager.js"></script>
+	<script type="text/javascript" src="js/renderers/APISwitches.js"></script>
+	<script type="text/javascript" src="js/renderers/Input.js"></script>
+	<script type="text/javascript" src="js/renderers/EntitySelectorTabs.js"></script>
+	<script type="text/javascript" src="js/renderers/ResultRaw.js"></script>
+	<script type="text/javascript" src="js/renderers/ResultVisual.js"></script>
+	<script type="text/javascript" src="js/renderers/OutputTabs.js"></script>
+	<script type="text/javascript" src="js/renderers/EntityInfo.js"></script>
+	<script type="text/javascript" src="js/renderers/EntityImg.js"></script>
+	<script type="text/javascript" src="js/changeCSS.js"></script>
+	<script type="text/javascript" src="js/renderers/ColorManager.js"></script>
+	<script type="text/javascript" src="js/FileSaver.js"></script>
+    
+  
+  </body>
+</html>
+
+  
+
+

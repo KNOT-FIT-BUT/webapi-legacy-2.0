@@ -1,0 +1,53 @@
+{
+  "asset":
+  {
+  	"name":"FreeBase",
+  	"description":""
+  },
+
+  "configuration":
+  {
+    "auto-load": false,
+    "access":"off",
+    "tools": "figa",
+    "parts":
+    {
+    	"kb": 
+    	{
+    		"target":"./freebase/KB.all",
+  			"adapter":"KBgeneric",
+  			"adapter_configuration":
+  			{
+				"header":
+	    		{
+	    			"external_file":null,
+	    			"included":false,
+	    			"custom":
+	    			{
+					    "generic": 
+					    [
+					      "id",
+					      "name",
+					      "*freebase types",
+					      "alternative names",
+					      "description"
+					    ],
+					    "data": {"generic":{"name":"Generic data","dataPlus":null}}
+					}
+	  			},
+	  			"value_splitter": "|"  			
+  			}
+    	},
+    	"fsa":
+    	{
+    		"target": "./freebase/KB.all.fsa",
+    		"adapter":"GenericAsset",
+    		"adapter_configuration":null
+    	}
+    }
+  }
+  
+}
+
+
+

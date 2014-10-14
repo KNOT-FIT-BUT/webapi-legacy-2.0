@@ -1,0 +1,54 @@
+{
+  "asset":
+  {
+  	"name":"Wikipedia",
+  	"description":""
+  },
+
+  "configuration":
+  {
+    "auto-load": false,
+    "access":"off",
+    "tools":"figa",
+    "parts":
+    {
+    	"kb": 
+    	{
+    		"target":"./wikipedia/KB.all",
+  			"adapter":"KBgeneric",
+  			"adapter_configuration":
+  			{
+	  			"header":
+	    		{
+	    			"external_file":null,
+	    			"included":false,
+	    			"custom":
+	    			{
+					    "generic": 
+					    [
+					      "title",
+					      "id",
+					      "*alias",
+					      "*backlinks",
+					      "views",
+					      "primary tag",
+                			      "first sentecne"
+					    ],
+					    "data": {"generic":{"name":"Generic data","dataPlus":null}}
+					}
+					
+	  			},
+	  			"value_splitter": "|"
+  			}
+    	},
+    	"fsa":
+    	{
+    		"target": "./wikipedia/KB.all.fsa",
+    		"adapter":"GenericAsset",
+    		"adapter_configuration":null
+    	}
+    }
+  }
+  
+}
+

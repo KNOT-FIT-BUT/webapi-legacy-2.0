@@ -1,0 +1,80 @@
+/*******************************
+            Global
+*******************************/
+
+html,
+body {
+  font-size: 15px;
+  height: 100%;
+}
+
+body {
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  background: #FFFFFF;
+  margin: 0px;
+  padding: 0px;
+  color: #555555;
+  text-rendering: optimizeLegibility;
+  min-width: 320px;
+}
+
+.ui.header {
+  font-family: 'Source Sans Pro', "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+
+
+/*-------------------
+        Grid
+--------------------*/
+
+#feed .grid {
+  height: 100%;
+}
+
+#feed > .grid > .column {
+  height: 100%;
+  max-height: 100%;
+}
+
+#stacionary{
+	height:202px;  
+	
+}
+
+
+#sugestion{
+	overflow-y:scroll;
+	/*display:table;*/
+	height:80%;  
+}
+
+
+.alabel {
+	background-color:#00CC00;
+	float:left;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: bold;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    /*text-transform: uppercase;*/
+    white-space: nowrap;
+    margin: 5px;
+    cursor:pointer;
+}
+
+
+.activo{
+	background-color:black;
+}
+
+.yellow{
+	font-weight: bold;
+}

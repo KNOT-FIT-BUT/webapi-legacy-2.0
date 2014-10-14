@@ -1,0 +1,12 @@
+libs/
+assets/data/
+
+*.pyc
+*.log
+*.fsa
+*.kb
+*.pid
+
+
+.*
+!.gitignore
